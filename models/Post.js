@@ -6,8 +6,9 @@ const postSchema = mongoose.Schema({
         required: true
     },
     user_id: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        require: true 
     },
     created_date: {
         type: Date,
@@ -21,6 +22,9 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true
     }
+    
+}, {
+    versionKey: false
 })
 
-module.exports = mongoose.model('Post', postSchema)
+module.exports = mongoose.model('Post', postSchema, 'post')
